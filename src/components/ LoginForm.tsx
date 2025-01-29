@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { TextField, Button, Box, Typography, LinearProgress, IconButton } from "@mui/material";
+import { TextField, Button, Box, Typography, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material"; // Importando ícones para visualização da senha
-import OverviewImage from "../assets/image/Overview.png";
 import Logo from "../assets/image/logo.png"; // Caminho da logo
 import GoogleIcon from "../assets/image/google.png"; // Caminho do ícone do Google
 import AppleIcon from "../assets/image/apple.png"; // Caminho do ícone da Apple
@@ -16,14 +15,12 @@ import F5 from "../assets/image/1st Column/F5.png";
 import F6 from "../assets/image/1st Column/F6.png";
 import F7 from "../assets/image/1st Column/F7.png";
 import F8 from "../assets/image/1st Column/F8.png";
-import F9 from "../assets/image/1st Column/F9.png";
 
 // Importando as SEGUNDA da primeira coluna
 import C1 from "../assets/image/2nd Column/F1.png";
 import C2 from "../assets/image/2nd Column/F2.png";
 import C3 from "../assets/image/2nd Column//F3.png";
 import C4 from "../assets/image/2nd Column/F4.png";
-import C5 from "../assets/image/2nd Column/F5.png";
 
 import T1 from "../assets/image/3rd Column/F1.png";
 import T2 from "../assets/image/3rd Column/F2.png";
@@ -33,12 +30,11 @@ import T5 from "../assets/image/3rd Column/F5.png";
 import T6 from "../assets/image/3rd Column/F6.png";
 import T7 from "../assets/image/3rd Column/F7.png";
 import T8 from "../assets/image/3rd Column/F8.png";
-import T9 from "../assets/image/3rd Column/F9.png";
-import T10 from "../assets/image/3rd Column/F10.png";
+
 
 
 const LoginForm: React.FC = () => {
-    const [password, setPassword] = useState("");
+    const [, setPassword] = useState("");
     const [passwordStrength, setPasswordStrength] = useState(0);
     const [showPassword, setShowPassword] = useState(false); // Controle do ícone de visualização da senha
     const [isSignIn, setIsSignIn] = useState(false);
