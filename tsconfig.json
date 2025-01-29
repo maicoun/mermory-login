@@ -1,17 +1,12 @@
 {
-  "compilerOptions": {
-    "jsx": "react",
-    "module": "ESNext",  // Garante que os módulos sejam tratados corretamente
-    "target": "ES5",  // Você pode alterar para "ES6" se não precisar de compatibilidade com navegadores antigos
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "esModuleInterop": true,  // Adiciona compatibilidade entre módulos
-    "moduleResolution": "node",  // Para garantir que a resolução de módulos funcione corretamente
-    "allowJs": true,  // Permite que arquivos JS sejam importados
-    "strict": true  // Ativa verificações estritas no TypeScript
-  },
+  "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  "compilerOptions": {
+    "jsx": "react",
+    "outDir": "./dist", 
+    "rootDir": "./src"
+  }
 }
