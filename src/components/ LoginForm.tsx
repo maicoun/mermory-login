@@ -41,6 +41,7 @@ const LoginForm: React.FC = () => {
     const [password, setPassword] = useState("");
     const [passwordStrength, setPasswordStrength] = useState(0);
     const [showPassword, setShowPassword] = useState(false); // Controle do ícone de visualização da senha
+    const [isSignIn, setIsSignIn] = useState(false);
 
     // Função para medir a força da senha
     const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -99,209 +100,265 @@ const LoginForm: React.FC = () => {
 
             {/* Coluna do Formulário */}
             <Box
-                display="flex"
-                flexDirection="column"
-                alignItems="center"
-                justifyContent="center"
-                flex={1}
-                px={3}
-                zIndex={20} // Garantir que o formulário tenha um zIndex maior
-                position="relative"
+    display="flex"
+    flexDirection="column"
+    alignItems="center"
+    justifyContent="center"
+    flex={1}
+    px={3}
+    zIndex={20}
+    position="relative"
+>
+    <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{
+            maxWidth: "400px",
+            width: "100%",
+            padding: "20px",
+            bgcolor: "#fff",
+            borderRadius: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+        }}
+    >
+        {/* Título e subtítulo */}
+        <Typography 
+    variant="h4" 
+    align="center" 
+    mb={3} 
+    sx={{ fontWeight: "bold", fontSize: "1.8rem" }}
+>
+    {isSignIn ? (
+        <span
+            style={{
+             
+                fontWeight: "bold",
+                color: "black"
+            }}
+        >
+            Welcome back
+        </span>
+    ) : (
+        <>
+            <span
+                style={{
+                    background: "linear-gradient(90deg, #2C9CE2 0.01%, #BFADF2 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    fontWeight: "bold",
+                }}
             >
-                <Box
-                    component="form"
-                    onSubmit={handleSubmit}
-                    sx={{
-                        maxWidth: "400px",
-                        width: "100%",
-                        padding: "20px",
-                        bgcolor: "#fff",
-                        borderRadius: "16px",
-                        boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
-                    }}
+                Get Started
+            </span>{" "}
+            <span style={{ color: "#000", fontSize: "1.8rem" }}>
+                to unlock your study potential.
+            </span>
+        </>
+    )}
+</Typography>
+
+        <Typography variant="body2" align="center" mb={3}>
+            {isSignIn ? (
+                <span
+                    style={{ color: "#ab9494" }}
+                    onClick={() => setIsSignIn(false)}
                 >
-                    <Typography
-                        variant="h4"
-                        align="center"
-                        mb={3}
-                        sx={{ fontWeight: "bold", fontSize: "1.8rem" }}
+                    Don't have an account?{" "}
+                    <span style={{ color: "#4facfe", cursor: "pointer", textDecoration: "unset" }}>
+                        Sign Up
+                    </span>
+                </span>
+            ) : (
+                <span style={{ color: "#ab9494" }}>
+                    Already have an account?{" "}
+                    <span
+                        style={{ color: "#4facfe", cursor: "pointer", textDecoration: "unset" }}
+                        onClick={() => setIsSignIn(true)}
                     >
-                        <span
-                            style={{
-                                background: "linear-gradient(90deg, #2C9CE2 0.01%, #BFADF2 100%)",
-                                WebkitBackgroundClip: "text",
-                                WebkitTextFillColor: "transparent",
-                                fontSize: "1.8rem",
-                                fontWeight: "bold",
-                            }}
-                        >
-                            Get Started
-                        </span>{" "}
-                        <span style={{ color: "#000", fontSize: "1.8rem" }}>
-                            to unlock your study potential.
-                        </span>
-                    </Typography>
+                        Sign In
+                    </span>
+                </span>
+            )}
+        </Typography>
 
-                    <Typography variant="body1" align="center" mb={2}>
-                        to unlock your study potential.
-                    </Typography>
+        {/* Botões de Login */}
+        <Button
+            variant="outlined"
+            fullWidth
+            sx={{
+                mb: 1,
+                color: "#000",
+                borderColor: "#ddd",
+                textTransform: "none",
+                "&:hover": { backgroundColor: "#f5f5f5" },
+            }}
+        >
+            <Box component="img" src={GoogleIcon} alt="Google" sx={{ mr: 1, height: 20 }} />
+            Continue with Google
+        </Button>
+        <Button
+            variant="outlined"
+            fullWidth
+            sx={{
+                mb: 1,
+                color: "#000",
+                borderColor: "#ddd",
+                textTransform: "none",
+                "&:hover": { backgroundColor: "#f5f5f5" },
+            }}
+        >
+            <Box component="img" src={AppleIcon} alt="Apple" sx={{ mr: 1, height: 20 }} />
+            Continue with Apple
+        </Button>
+        <Button
+            variant="outlined"
+            fullWidth
+            sx={{
+                mb: 3,
+                color: "#000",
+                borderColor: "#ddd",
+                textTransform: "none",
+                "&:hover": { backgroundColor: "#f5f5f5" },
+            }}
+        >
+            <Box component="img" className="facebooklogo" src={FacebookIcon} alt="Facebook" sx={{ mr: 1, height: 20 }} />
+            Continue with Facebook
+        </Button>
 
-                    {/* Already have an account? Sign In */}
-                    <Typography variant="body2" align="center" mb={3}>
-                        <span style={{ color: "#ab9494" }}>Already have an account?</span>{" "}
-                        <span style={{ color: "#4facfe", cursor: "pointer", textDecoration: "unset" }}>
-                            Sign In
-                        </span>
-                    </Typography>
+        {/* Linha com "OR" */}
+        <Box display="flex" alignItems="center" mb={3}>
+            <Box sx={{ flexGrow: 1, borderBottom: "1px solid #ddd" }} />
+            <Typography className="or-line" variant="body2" sx={{ mx: 2 }}>OR</Typography>
+            <Box sx={{ flexGrow: 1, borderBottom: "1px solid #ddd" }} />
+        </Box>
 
-                    {/* Botões de Login */}
-                    <Button
-                        variant="outlined"
-                        fullWidth
-                        sx={{
-                            mb: 1,
-                            color: "#000",
-                            borderColor: "#ddd",
-                            textTransform: "none",
-                            "&:hover": { backgroundColor: "#f5f5f5" },
-                        }}
-                    >
-                        <Box component="img" src={GoogleIcon} alt="Google" sx={{ mr: 1, height: 20 }} />
-                        Continue with Google
-                    </Button>
-                    <Button
-                        variant="outlined"
-                        fullWidth
-                        sx={{
-                            mb: 1,
-                            color: "#000",
-                            borderColor: "#ddd",
-                            textTransform: "none",
-                            "&:hover": { backgroundColor: "#f5f5f5" },
-                        }}
-                    >
-                        <Box component="img" src={AppleIcon} alt="Apple" sx={{ mr: 1, height: 20 }} />
-                        Continue with Apple
-                    </Button>
-                    <Button
-                        variant="outlined"
-                        fullWidth
-                        sx={{
-                            mb: 3,
-                            color: "#000",
-                            borderColor: "#ddd",
-                            textTransform: "none",
-                            "&:hover": { backgroundColor: "#f5f5f5" },
-                        }}
-                    >
-                        <Box component="img" className="facebooklogo" src={FacebookIcon} alt="Facebook" sx={{ mr: 1, height: 20 }} />
-                        Continue with Facebook
-                    </Button>
+        {/* Campos */}
+        <Box mb={2}>
+            <Typography variant="body2" sx={{ mb: 1 }}>Email <span style={{ color: "red" }}>*</span></Typography>
+            <TextField
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                required
+                placeholder="Enter your email"
+                className="principal-input"
+            />
+        </Box>
 
-                    {/* Linha com "OR" */}
-                    <Box display="flex" alignItems="center" mb={3}>
-                        <Box sx={{ flexGrow: 1, borderBottom: "1px solid #ddd" }} />
-                        <Typography className="or-line" variant="body2" sx={{ mx: 2 }}>OR</Typography>
-                        <Box sx={{ flexGrow: 1, borderBottom: "1px solid #ddd" }} />
-                    </Box>
-
+        {isSignIn ? (
+            <>
+                <Box position="relative" mb={2}>
+                    <Typography variant="body2" sx={{ mb: 1 }}>Password <span style={{ color: "red" }}>*</span></Typography>
                     <TextField
-                        label="Email"
+                        type={showPassword ? "text" : "password"}
                         variant="outlined"
                         fullWidth
                         margin="normal"
                         required
-                        placeholder="Enter your email"
-                        InputLabelProps={{
-                            shrink: true, // Garante que o label fique acima
-                        }}
+                        placeholder="Enter your password"
+                        onChange={handlePasswordChange}
                     />
+                    <IconButton
+                        onClick={togglePasswordVisibility}
+                        sx={{
+                            position: "absolute",
+                            right: "10px",
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            padding: 0,
+                            "&:focus": { outline: "none" },
+                        }}
+                    >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                </Box>
+            </>
+        ) : (
+            <>
+                <Box position="relative" mb={2}>
+                    <Typography variant="body2" sx={{ mb: 1 }}>Password <span style={{ color: "red" }}>*</span></Typography>
+                    <TextField
+                        type={showPassword ? "text" : "password"}
+                        variant="outlined"
+                        fullWidth
+                        margin="normal"
+                        required
+                        placeholder="Enter your password"
+                        className="principal-input"
+                        onChange={handlePasswordChange}
+                    />
+                    <IconButton
+                        onClick={togglePasswordVisibility}
+                        sx={{
+                            position: "absolute",
+                            right: "10px",
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            padding: 0,
+                            "&:focus": { outline: "none" },
+                        }}
+                    >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                </Box>
 
-                    <Box position="relative" mb={2}>
-                        <TextField
-                            label="Password"
-                            type={showPassword ? "text" : "password"}
-                            variant="outlined"
-                            fullWidth
-                            margin="normal"
-                            required
-                            placeholder="Enter your password"
-                            onChange={handlePasswordChange}
-                            InputLabelProps={{
-                                shrink: true, // Garante que o label "Password" fique sempre fora
+                {/* Barra de Força da Senha */}
+                <Box display="flex" className="passwordBar" justifyContent="space-between" mt={2}>
+                    {[...Array(4)].map((_, index) => (
+                        <Box
+                            key={index}
+                            sx={{
+                                width: "22%",
+                                height: "8px",
+                                borderRadius: "4px",
+                                backgroundColor: index < passwordStrength ? "#4caf50" : "#ddd",
+                                transition: "background-color 0.3s",
                             }}
                         />
-                        <IconButton
-                            onClick={togglePasswordVisibility}
-                            sx={{
-                                position: "absolute",
-                                right: "10px",
-                                top: "50%",
-                                transform: "translateY(-50%)",
-                                padding: 0,
-                                "&:focus": {
-                                    outline: "none", // Remove a borda ao clicar no ícone
-                                },
-                            }}
-                        >
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                    </Box>
-                
-
-                    {/* Barra de Força da Senha */}
-                    <Box display="flex" className="passwordBar" justifyContent="space-between" mt={2}>
-                        {[...Array(4)].map((_, index) => (
-                            <Box
-                                key={index}
-                                sx={{
-                                    width: "22%",
-                                    height: "8px",
-                                    borderRadius: "4px",
-                                    backgroundColor: index < passwordStrength ? "#4caf50" : "#ddd",
-                                    transition: "background-color 0.3s",
-                                }}
-                            />
-                        ))}
-                    </Box>
-                    <Typography className="sub-progress" variant="body2" color="textSecondary" align="left">
-                        Make your password strong by combining letters, numbers, and symbols.
-                    </Typography>
+                    ))}
+                </Box>
+                <Typography className="sub-progress" variant="body2" color="textSecondary" align="left">
+                    Make your password strong by combining letters, numbers, and symbols.
+                </Typography>
+                <Box mb={2}>
+                    <Typography variant="body2" sx={{ mb: 1 }}>Birthday <span style={{ color: "red" }}>*</span></Typography>
                     <TextField
-                        label="Birthday"
                         type="date"
-                        InputLabelProps={{ shrink: true }}
                         placeholder="DD/MM/YYYY"
                         variant="outlined"
                         fullWidth
                         margin="normal"
                         required
                     />
-
-
-                    <Button
-                        className="button-go"
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        fullWidth
-                        sx={{ mt: 2, textTransform: "none" }}
-                    >
-                        Continue
-                    </Button>
-
-                    {/* Frase de aceitação */}
-                    <Typography
-                        className="continue-subtitle"
-                        variant="body2"
-                        align="center"
-                        mt={2}
-                        sx={{ color: "#666", fontSize: "0.9rem" }}
-                    >
-                        By continuing you agree to our <span style={{ color: "#4facfe", cursor: "pointer" }}>User Agreement</span> and acknowledge our <span style={{ color: "#4facfe", cursor: "pointer" }}>Privacy Policy</span>.
-                    </Typography>
                 </Box>
-            </Box>
+            </>
+        )}
+
+        <Button
+            className="button-go"
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{ mt: 2, textTransform: "none" }}
+        >
+            Continue
+        </Button>
+
+        {/* Frase de aceitação */}
+        <Typography
+            className="continue-subtitle"
+            variant="body2"
+            align="center"
+            mt={2}
+            sx={{ color: "#666", fontSize: "0.9rem" }}
+        >
+            By continuing you agree to our <span style={{ color: "#4facfe", cursor: "pointer" }}>User Agreement</span> and acknowledge our <span style={{ color: "#4facfe", cursor: "pointer" }}>Privacy Policy</span>.
+        </Typography>
+    </Box>
+</Box>
+
+
 
             {/* Coluna de Imagens */}
             <Box

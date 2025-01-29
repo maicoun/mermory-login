@@ -82,15 +82,15 @@ div#root {
     width: 90%!important;
   }
 }
-button#\:rf\: {
-  border-radius: 21px;
-    width: 57%;
-    margin: 0 auto;
+.css-17haacb-MuiButtonBase-root-MuiButton-root{
+  border-radius: 21px!important;
+    width: 57%!important;
+    margin: 0 auto!important;
  
-    text-align: center;
-    margin-left: 5.2pc;
-    align-items: center;
-    background: #207DB5;
+    text-align: center!important;
+    margin-left: 5.2pc!important;
+    align-items: center!important;
+    background: #207DB5!important;
 }img.facebooklogo.MuiBox-root.css-1aox1q8 {
   transform: scale(1.5);
 }
@@ -112,8 +112,15 @@ p.MuiTypography-root.MuiTypography-body2.MuiTypography-alignCenter.continue-subt
   height: 0.4em;
 }.image-column.MuiBox-root.css-1q8s8cw {
   transform: rotate(-8deg);
-    top: -14pc;
+
 }
+
+
+@media (min-width: 1580px) {
+  .image-column.MuiBox-root.css-1q8s8cw  {
+    top: -14pc;
+  }
+  }
 .MuiBox-root.css-1ba8zzs {
   height: 905px;
 }
@@ -161,9 +168,19 @@ form.MuiBox-root.css-145tsb0 {
   background-color: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transform: scale(0.8);
-  margin-top: -10pc;
+  
+  
 }
+
+@media (MIN-width: 1200px) {
+  form.MuiBox-root.css-145tsb0 {
+    transform: scale(0.8);
+  margin-top: -10pc;
+
+  }
+  }
+
+
 .passwordBar {
   margin-top: 0px;
   width: 62%;
@@ -171,7 +188,6 @@ form.MuiBox-root.css-145tsb0 {
 }
 
 input#\:r7\: {
-  background: #f2f2f2;
   height: 7px;
 }
 
@@ -187,7 +203,7 @@ input#\:r9\: {
 
 .css-1umw9bq-MuiSvgIcon-root {
   transform: scale(0.7);
-  padding-top: 10px;
+  padding-top: 21px;
   color: #d8c7c7;
 }
 
@@ -201,9 +217,9 @@ input#\:r9\: {
 }
 
 .css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input {
-  height: 3px!important;
-  border-radius: 15px;
-  color: #a59797!important;
+  height: 3px !important;
+  color: #635a5a !important;
+  font-size: 13px !important;
 }
 
 .css-1olaq31 {
@@ -218,4 +234,13 @@ input#\:r9\: {
 
 .css-pdq02v {
   margin-bottom: 3px!important;
+}
+
+.css-19znlxf-MuiTypography-root {
+  margin-bottom: -9px!important;
+  color: #000!important;
+}
+
+.principal-input {
+  background: #f7f7f7;
 }
